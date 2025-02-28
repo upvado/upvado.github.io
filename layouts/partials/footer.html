@@ -1,0 +1,30 @@
+<footer class="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+  <div class="pt-5 mt-5 border-t border-gray-200 dark:border-neutral-700">
+    <div class="sm:flex sm:justify-between sm:items-center">
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="space-x-4 text-sm">
+          <a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200" href="{{ .Site.BaseURL }}license-agreement">Terms</a>
+          <a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200" href="{{ .Site.BaseURL}}privacy-policy">Privacy</a>
+          <a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200" href="{{ .Site.Params.Substack}}" target="_blank">Blog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{{ with resources.Get "js/app.js" }}
+  {{ $opts := dict
+    "minify" hugo.IsProduction
+    "sourceMap" (cond hugo.IsProduction "" "external")
+    "targetPath" "js/app.js"
+  }}
+  {{ with . | js.Build $opts }}
+    {{ if hugo.IsProduction }}
+      {{ with . | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+      {{ end }}
+    {{ else }}
+      <script src="{{ .RelPermalink }}"></script>
+    {{ end }}
+  {{ end }}
+{{ end }}

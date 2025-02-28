@@ -1,0 +1,22 @@
+<div class="bg-gradient-to-r from-red-600 via-rose-900 to-rose-950 flex items-center justify-center min-h-[90vh]" id="hero">
+  <div class="max-w-[85rem] w-full px-4 sm:px-6 lg:px-8 py-24 space-y-8 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="block font-medium text-gray-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+        {{ .Get "title" }}
+      </h1>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <p class="text-2xl text-white/70 pb-8">{{ .Inner }}</p>
+      <div class="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
+        <img src="{{ .Site.BaseURL }}images/adobe_certified_white_badge.png" alt="Image 1" class="w-full max-w-[275px] mx-auto rounded-lg" />
+        <img src="{{ .Site.BaseURL }}images/shopify-partner.png" alt="Image 2" class="w-full max-w-[275px] mx-auto rounded-lg" />
+      </div>
+    </div>
+
+    <div class="mt-15">
+      <a href="{{ .Site.Params.Demo}}" target="_blank" class="bg-zinc-900 px-8 py-4 rounded-full hover:shadow-2xl hover:bg-white font-bold text-zinc-100 hover:text-zinc-900 transition duration-300">Explore the Demo Webshop</a>
+    </div>
+  </div>
+</div>
+
